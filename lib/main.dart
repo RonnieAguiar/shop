@@ -24,10 +24,10 @@ class MyApp extends StatelessWidget {
               .copyWith(secondary: Colors.deepOrange),
           fontFamily: 'Lato',
         ),
-        home: ProductsOverviewPage(),
+        home: const ProductsOverviewPage(),
         debugShowCheckedModeBanner: false,
         routes: {
-          AppRoutes.productDetail: (ctx) => ProductDetailPage(),
+          AppRoutes.productDetail: (ctx) => const ProductDetailPage(),
         },
       ),
     );
