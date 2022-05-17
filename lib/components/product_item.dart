@@ -46,7 +46,7 @@ class ProductItem extends StatelessWidget {
             color: Theme.of(context).colorScheme.secondary,
           ),
           title: Text(
-            product.title,
+            product.name,
             textAlign: TextAlign.center,
           ),
         ),
