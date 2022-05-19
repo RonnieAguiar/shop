@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class Badge extends StatelessWidget {
   final Widget child;
-  final String value;
+  final int value;
   final Color? color;
 
   const Badge({
@@ -18,7 +18,7 @@ class Badge extends StatelessWidget {
       alignment: Alignment.center,
       children: [
         child,
-        Positioned(
+        value > 0 ? Positioned(
           right: 8,
           top: 8,
           child: Container(
@@ -32,14 +32,14 @@ class Badge extends StatelessWidget {
               minWidth: 16,
             ),
             child: Text(
-              value,
+              value.toString(),
               textAlign: TextAlign.center,
               style: const TextStyle(
                 fontSize: 10,
               ),
             ),
           ),
-        )
+        ) : Container()
       ],
     );
   }

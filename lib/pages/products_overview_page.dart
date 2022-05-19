@@ -50,7 +50,7 @@ class _ProductsOverviewPageState extends State<ProductsOverviewPage> {
                 icon: const Icon(Icons.shopping_cart),
               ),
             builder: (ctx, cart, child) => Badge(
-              value: cart.itemsCount.toString(),
+              value: cart.itemsCount,
               child: child!,
             ),
           )
