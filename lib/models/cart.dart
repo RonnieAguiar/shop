@@ -6,7 +6,7 @@ import 'package:shop/models/product.dart';
 
 class Cart with ChangeNotifier {
   Map<String, CartItem> _items = {};
-  Map<String, CartItem> get items => {...items};
+  Map<String, CartItem> get items => {..._items};
 
   int get itemsCount => _items.length;
 
