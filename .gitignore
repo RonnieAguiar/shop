@@ -29,7 +29,15 @@
 .packages
 .pub-cache/
 .pub/
+.metadata
 /build/
+/android/
+/ios/
+/test/
+/web/
+/windows/
+/linux/
+/macos/
 
 # Web related
 lib/generated_plugin_registrant.dart
@@ -44,12 +52,3 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
-
-
-/android/
-/ios/
-/test/
-/web/
-/windows/
-/linux/
-/macos/
