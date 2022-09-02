@@ -28,6 +28,7 @@ class _ProductsOverviewPageState extends State<ProductsOverviewPage> {
         title: const Center(child: Text('Minha Loja')),
         actions: [
           PopupMenuButton(
+            icon: const Icon(Icons.filter_alt),
             itemBuilder: (_) => [
               const PopupMenuItem(
                 child: Text('Somente Favoritos'),
