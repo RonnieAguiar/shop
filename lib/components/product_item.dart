@@ -34,31 +34,26 @@ class ProductItem extends StatelessWidget {
             icon: const Icon(Icons.delete),
             color: Theme.of(context).errorColor,
             onPressed: () {
-              showDialog(
+              showDialog<bool>(
                 context: context,
-                builder: (BuildContext context) {
-                  return AlertDialog(
-                    title: const Text('Exclusão'),
-                    content: const Text('Confirma a exclusão do produto?'),
-                    actions: [
-                      TextButton(
-                        onPressed: () {
-                          Navigator.of(context).pop();
-                        },
-                        child: const Text('Cancelar'),
-                      ),
-                      TextButton(
-                        onPressed: () {
-                          Provider.of<ProductList>(context, listen: false).removeProduct(product);
-                          Navigator.of(context).pop();
-                        },
-                        child: const Text('Confirmar'),
-                      ),
-                    ],
-                  );
-                },
-              );
-              // Provider.of<ProductList>(context, listen: false).removeProduct(product);
+                builder: (BuildContext context) => AlertDialog(
+                  title: const Text('Exclusão'),
+                  content: const Text('Confirma a exclusão do produto?'),
+                  actions: [
+                    TextButton(
+                      onPressed: () => Navigator.of(context).pop(false),
+                      child: const Text('Cancelar'),
+                    ),
+                    TextButton(
+                      onPressed: () => Navigator.of(context).pop(true),
+                      child: const Text('Confirmar'),
+                    ),
+                  ],
+                ),
+              ).then((value) => value ?? false
+                  ? Provider.of<ProductList>(context, listen: false)
+                      .removeProduct(product)
+                  : null);
             },
           ),
         ]),
