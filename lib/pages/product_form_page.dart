@@ -85,8 +85,10 @@ class _ProductFormPageState extends State<ProductFormPage> {
         listen: false,
       ).saveProduct(_formData);
 
+      // ignore: use_build_context_synchronously
       Navigator.of(context).pop();
-    } on Exception catch (e) {
+
+    } on Exception catch (_) {
       showDialog<void>(
         context: context,
         builder: ((context) => AlertDialog(
@@ -135,9 +137,9 @@ class _ProductFormPageState extends State<ProductFormPage> {
                           FocusScope.of(context).requestFocus(_priceFocus);
                         },
                         onSaved: (name) => _formData['name'] = name ?? '',
-                        validator: (_name) {
-                          final name = _name ?? '';
-                          return name.trim().length < 4
+                        validator: (name) {
+                          // final name = _name ?? '';
+                          return (name ?? '').trim().length < 4
                               ? 'Nome precisa ter mais que 3 caracteres'
                               : null;
                         },
@@ -155,9 +157,8 @@ class _ProductFormPageState extends State<ProductFormPage> {
                         },
                         onSaved: (price) =>
                             _formData['price'] = double.parse(price ?? '0'),
-                        validator: (_price) {
-                          final priceString = _price ?? '';
-                          final price = double.tryParse(priceString) ?? -1;
+                        validator: (value) {
+                          final price = double.tryParse(value ?? '') ?? -1;
                           return price <= 0 ? 'Informe um valor válido' : null;
                         },
                       ),
@@ -170,9 +171,8 @@ class _ProductFormPageState extends State<ProductFormPage> {
                         maxLines: 3,
                         onSaved: (description) =>
                             _formData['description'] = description ?? '',
-                        validator: (_description) {
-                          final description = _description ?? '';
-                          return description.trim().length < 10
+                        validator: (description) {
+                          return (description ?? '').trim().length < 10
                               ? 'Descrição precisa ter mais que 10 caracteres'
                               : null;
                         },
@@ -190,11 +190,11 @@ class _ProductFormPageState extends State<ProductFormPage> {
                               onFieldSubmitted: (_) => _submitForm(),
                               onSaved: (imageUrl) =>
                                   _formData['imageUrl'] = imageUrl ?? '',
-                              validator: (_imageUrl) {
-                                final imageUrl = _imageUrl ?? '';
-                                if (!isValidImageUrl(imageUrl)) {
+                              validator: (imageUrl) {
+                                if (!isValidImageUrl(imageUrl ?? '')) {
                                   return 'Informe uma url válida';
                                 }
+                                return null;
                               },
                             ),
                           ),
