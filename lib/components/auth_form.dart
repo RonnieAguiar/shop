@@ -1,6 +1,11 @@
-import 'package:flutter/material.dart';
+import 'dart:async';
 
-enum AuthMode { Signup, Login }
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../models/auth.dart';
+
+enum AuthMode { signup, login }
 
 class AuthForm extends StatefulWidget {
   const AuthForm({Key? key}) : super(key: key);
@@ -14,22 +19,22 @@ class _AuthFormState extends State<AuthForm> {
   final _formkey = GlobalKey<FormState>();
   bool _isLoading = false;
 
-  AuthMode _authMode = AuthMode.Login;
+  AuthMode _authMode = AuthMode.login;
   final Map<String, String> _authData = {
     'email': '',
-    'passwaord': '',
+    'password': '',
   };
 
-  bool _isLogin() => _authMode == AuthMode.Login;
-  bool _isSignup() => _authMode == AuthMode.Signup;
+  bool _isLogin() => _authMode == AuthMode.login;
+  bool _isSignup() => _authMode == AuthMode.signup;
 
   void _switchAutMode() {
     setState(() {
-      _authMode = _isLogin() ? AuthMode.Signup : AuthMode.Login;
+      _authMode = _isLogin() ? AuthMode.signup : AuthMode.login;
     });
   }
 
-  void _submit() {
+  Future<void> _submit() async {
     final isValid = _formkey.currentState?.validate() ?? false;
 
     if (!isValid) return;
@@ -37,10 +42,13 @@ class _AuthFormState extends State<AuthForm> {
     setState(() => _isLoading = true);
 
     _formkey.currentState?.save();
-    if(_isLogin()){
-
+    Auth auth = Provider.of(context, listen: false);
+    if (_isLogin()) {
     } else {
-
+      await auth.signup(
+        _authData['email']!,
+        _authData['password']!,
+      );
     }
 
     setState(() => _isLoading = false);
@@ -69,10 +77,9 @@ class _AuthFormState extends State<AuthForm> {
                   onSaved: (value) => _authData['email'] = value ?? '',
                   validator: (value) {
                     final email = value ?? '';
-                    email.trim().isEmpty || !email.contains('@')
+                    return email.trim().isEmpty || !email.contains('@')
                         ? 'Informe email válido'
                         : null;
-                    return null;
                   },
                 ),
                 TextFormField(
@@ -82,10 +89,9 @@ class _AuthFormState extends State<AuthForm> {
                   onSaved: (value) => _authData['password'] = value ?? '',
                   validator: (value) {
                     final password = value ?? '';
-                    password.isEmpty || password.length < 5
+                    return password.isEmpty || password.length < 5
                         ? 'Informe uma senha válida'
                         : null;
-                    return null;
                   },
                 ),
                 if (_isSignup())
@@ -96,10 +102,9 @@ class _AuthFormState extends State<AuthForm> {
                     validator: _isLogin()
                         ? null
                         : (value) {
-                            (value ?? '') != _passwordController.text
+                            return (value ?? '') != _passwordController.text
                                 ? 'Senha não confere'
                                 : null;
-                            return null;
                           },
                   ),
                 const SizedBox(height: 20),
