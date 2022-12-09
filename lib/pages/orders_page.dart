@@ -8,7 +8,7 @@ import '../models/order_list.dart';
 class OrdersPage extends StatelessWidget {
   const OrdersPage({Key? key}) : super(key: key);
 
-  Future<void> _refreshOrders(BuildContext context){
+  Future<void> _refreshOrders(BuildContext context) {
     return Provider.of<OrderList>(context, listen: false).loadOrders();
   }
 
@@ -23,11 +23,13 @@ class OrdersPage extends StatelessWidget {
         onRefresh: (() => _refreshOrders(context)),
         child: FutureBuilder(
           future: Provider.of<OrderList>(context, listen: false).loadOrders(),
-          builder: ((context, snapshot) {
+          builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
               return const Center(child: CircularProgressIndicator());
             } else if (snapshot.error != null) {
-              return const Center(child: Text('Ocorreu um erro!'));
+              return const Center(
+                child: Text('Ocorreu um erro!'),
+              );
             } else {
               return Consumer<OrderList>(
                 builder: (context, orders, child) => ListView.builder(
@@ -36,7 +38,7 @@ class OrdersPage extends StatelessWidget {
                 ),
               );
             }
-          }),
+          },
         ),
       ),
     );
