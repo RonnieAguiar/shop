@@ -1,0 +1,78 @@
+{
+  "orders": {
+    "C27j2cGZnSY5o3FaYhTjggsa1dq1": {
+      "-NJ4xgCf3TIQi17riFCw": {
+        "date": "2022-12-12T08:52:13.378982",
+        "products": [
+          {
+            "id": "0.012025103766163281",
+            "name": "CZ P-10C",
+            "price": 9000,
+            "productId": "-NHz2gmVCwCt8aJ-2CCT",
+            "quantity": 1
+          },
+          {
+            "id": "0.9043002260305338",
+            "name": "Rifle .22",
+            "price": 5000,
+            "productId": "-NHzIy-aJ936r2QWMbL0",
+            "quantity": 1
+          },
+          {
+            "id": "0.6034652026748571",
+            "name": "Bronco",
+            "price": 256000,
+            "productId": "-NIszPnV0kNMOHSsroid",
+            "quantity": 1
+          }
+        ],
+        "total": 270000
+      }
+    }
+  },
+  "products": {
+    "-NHiVZvbudOqk5Da0Uc0": {
+      "description": "Tabuleiro de Xadrez Medieval",
+      "imageUrl": "https://http2.mlstatic.com/D_NQ_NP_790851-MLA44709193652_012021-O.jpg",
+      "name": "Xadrez",
+      "price": 213.76
+    },
+    "-NHxn35xhDj7LocYSvTk": {
+      "description": "Pistola 9mm",
+      "imageUrl": "https://images.tcdn.com.br/img/img_prod/1026992/taurus_g3c_t_o_r_o_817_1_ba7aa60f162f56aa2978ceaa5576a023.jpg",
+      "name": "Taurus G3C T.O.R.O",
+      "price": 5000
+    },
+    "-NHz2gmVCwCt8aJ-2CCT": {
+      "description": "Pistola 9mm\nCZ\nModel: P10C",
+      "imageUrl": "https://www.pescaeciaarmas.com.br/img/products/pistola-ceska-zbrojovka-cz-p10-c-calibre-9mm-4polegadas-oxidada-15tiros_3_1000.jpg",
+      "name": "CZ P-10C",
+      "price": 9000
+    },
+    "-NHzIy-aJ936r2QWMbL0": {
+      "description": "Rifle .22 com  luneta",
+      "imageUrl": "https://carabinasbrasil.com.br/wp-content/uploads/2022/01/rifle-cbc-7022-semi-automatico-luxo-oxi-madeira_1_1200.jpg",
+      "name": "Rifle .22",
+      "price": 5000
+    },
+    "-NIqb8szKgffvhB2gtyS": {
+      "description": "Carrots maulco",
+      "imageUrl": "https://motorshow.com.br/wp-content/uploads/sites/2/2020/05/solo-rear-side-view_1575x1050.jpg",
+      "name": "Carro",
+      "price": 78965.98
+    },
+    "-NIszPnV0kNMOHSsroid": {
+      "description": "Ford Bronco",
+      "imageUrl": "https://1.bp.blogspot.com/-8ZkE-KZ90fQ/YKZxaQ-6GRI/AAAAAAAAwGU/6UddPzqN-Mgx9HOlmwwk4AfgN8KBS9jPgCLcBGAsYHQ/s2048/Ford-Bronco-2022%2B%25288%2529.jpg",
+      "name": "Bronco",
+      "price": 256000
+    }
+  },
+  "userFavorites": {
+    "C27j2cGZnSY5o3FaYhTjggsa1dq1": {
+      "-NHz2gmVCwCt8aJ-2CCT": true,
+      "-NHzIy-aJ936r2QWMbL0": true,
+      "-NIszPnV0kNMOHSsroid": true
+    }
+  }
+}
